@@ -42,8 +42,11 @@ class LoginVC: UIViewController {
     @IBAction func loginClick(_ sender: UIButton) {
         
        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.allBundles.first).instantiateViewController(withIdentifier: "MyProfileVC") as! MyProfileVC
-        
         self.navigationController?.pushViewController(vc, animated: true)
+        
+       print("\(self.passwordTextEdit.text), \(self.userNameTextEdit.text)")
+        
+        
         
         print("clicked")
     }

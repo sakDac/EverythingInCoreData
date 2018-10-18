@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Investment" representedClassName="Investment" syncable="YES" codeGenerationType="class">
+    <entity name="Friend" representedClassName="Friend" syncable="YES">
+        <attribute name="profileId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="myProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="myFriends" inverseEntity="Profile" syncable="YES"/>
+    </entity>
+    <entity name="Investment" representedClassName="Investment" syncable="YES">
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profileId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="buyer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="investmentScheme" inverseEntity="Profile" syncable="YES"/>
     </entity>
-    <entity name="Profile" representedClassName="Profile" syncable="YES" codeGenerationType="class">
+    <entity name="Profile" representedClassName="Profile" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="friends" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,9 +19,12 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="investmentScheme" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Investment" inverseName="buyer" inverseEntity="Investment" syncable="YES"/>
+        <relationship name="myFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Friend" inverseName="myProfile" inverseEntity="Friend" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Investment" positionX="-54" positionY="27" width="128" height="105"/>
-        <element name="Profile" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Investment" positionX="-54" positionY="27" width="128" height="120"/>
+        <element name="Profile" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Friend" positionX="-54" positionY="54" width="128" height="75"/>
     </elements>
 </model>

@@ -50,5 +50,14 @@ class LoginVC: UIViewController {
         
         print("clicked")
     }
+    
+    
+    @IBAction func signUpClick(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    
 }
 

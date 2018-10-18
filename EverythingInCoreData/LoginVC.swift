@@ -54,6 +54,9 @@ class LoginVC: UIViewController {
     
     @IBAction func signUpClick(_ sender: UIButton) {
         
+       let vc = UIStoryboard.init(name: "Main", bundle: Bundle.allBundles.first).instantiateViewController(withIdentifier: "CreateProfileVC") as! CreateProfileVC
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
         
     }
     

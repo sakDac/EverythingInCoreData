@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A99BB352178EF7C00CD3A1A /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99BB342178EF7C00CD3A1A /* CreateProfileVC.swift */; };
 		3AC7B7F921781AB400403DC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B7F821781AB400403DC0 /* AppDelegate.swift */; };
 		3AC7B7FB21781AB400403DC0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B7FA21781AB400403DC0 /* LoginVC.swift */; };
 		3AC7B7FE21781AB400403DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC7B7FC21781AB400403DC0 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A99BB342178EF7C00CD3A1A /* CreateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
 		3AC7B7F521781AB400403DC0 /* EverythingInCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverythingInCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC7B7F821781AB400403DC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AC7B7FA21781AB400403DC0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				3AC7B7FF21781AB400403DC0 /* EverythingInCoreData.xcdatamodeld */,
 				3AC7B80F2178284400403DC0 /* man.png */,
 				3AC7B80D2178248000403DC0 /* MyProfileVC.swift */,
+				3A99BB342178EF7C00CD3A1A /* CreateProfileVC.swift */,
 			);
 			path = EverythingInCoreData;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A99BB352178EF7C00CD3A1A /* CreateProfileVC.swift in Sources */,
 				3AC7B80E2178248000403DC0 /* MyProfileVC.swift in Sources */,
 				3AC7B7FB21781AB400403DC0 /* LoginVC.swift in Sources */,
 				3AC7B7F921781AB400403DC0 /* AppDelegate.swift in Sources */,

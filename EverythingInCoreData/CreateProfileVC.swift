@@ -28,9 +28,34 @@ class CreateProfileVC: UIViewController {
     
     @IBAction func createProfileClick(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+       let name = self.nameTextField.text
+       let userName = self.userName.text
+       let mobileNumber = self.mobileNumber.text
+       let address = self.address.text
+       let password = self.password.text
+       let reEnterpwd = self.reenterPassword.text
+
+        if (name?.trimmingCharacters(in: .whitespaces) == "" || userName?.trimmingCharacters(in: .whitespaces)  == "" || mobileNumber?.trimmingCharacters(in: .whitespaces)   == "" || address?.trimmingCharacters(in: .whitespaces)  == "" || password?.trimmingCharacters(in: .whitespaces)  == "" ||
+            reEnterpwd?.trimmingCharacters(in: .whitespaces)  == "" ) {
+            print("returning 1")
+            return
+        }
+        
+        if (password == reEnterpwd) {
+            let profile = Profile(context: CoreDataManager.shared.context)
+            profile.name = name
+            profile.userName = userName
+            profile.mobileNumber = Int16(mobileNumber ?? "0") ?? 0
+            profile.address = address
+            profile.password = password
+            profile.id = UUID.init().uuidString
+            CoreDataManager.shared.save()
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            print("returning 3")
+            return
+        }
+        
         
     }
-    
-    
 }

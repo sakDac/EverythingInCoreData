@@ -35,12 +35,27 @@ class CoreDataManager {
         self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
             if result.count == 1 {
                 self.authenticationDelegate?.LoginSuccess()
+                guard let profile = result.first as? Profile, let id = profile.id else {
+                    return
+                }
+                UserDefaults.standard.setValue(id, forKey: "profileId")
             } else {
                 self.authenticationDelegate?.LoginFailed()
             }
         }
     }
     
+    func getCurrentUserProfile(comptionHandler: @escaping ((Profile) -> Void)) {
+        let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
+        let predicate = NSPredicate(format: "id == %@", profileId)
+        self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
+            guard let profile = result.first as? Profile else {
+                return
+            }
+            comptionHandler(profile)
+        }
+        
+    }
     
     
     func fetchAll(enitityName: String, predicate: NSPredicate? = nil ,completionHandler: @escaping(_ resultArr: [Any]) -> Void)  {
@@ -51,4 +66,45 @@ class CoreDataManager {
         let result = try? self.context.fetch(request)
         completionHandler(result!)
     }
+    
+    
+    func addOrRemoveFriend(friendProfile: Profile, isAdd: Bool ) {
+        let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
+        let predicate = NSPredicate(format: "id == %@", profileId)
+        self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
+            guard let currentProfile = result.first as? Profile else {
+                return
+            }
+            let friend = Friend(context: self.context)
+            friend.myProfile = friendProfile
+            if isAdd {
+               currentProfile.addToMyFriends(friend)
+            } else {
+               currentProfile.removeFromMyFriends(friend)
+            }
+            self.save()
+        }
+    }
+    
+    
+    
+    func removeFriend(friendProfile: Profile) {
+        let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
+        let predicate = NSPredicate(format: "id == %@", profileId)
+        self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
+            guard let currentProfile = result.first as? Profile else {
+                return
+            }
+            for inFriend in  currentProfile.myFriends! {
+                let frn = inFriend as! Friend
+                if friendProfile.id! == frn.myProfile?.id {
+                    currentProfile.removeFromMyFriends(frn)
+                }
+            }
+            self.save()
+        }
+    }
+    
+    
+    
 }

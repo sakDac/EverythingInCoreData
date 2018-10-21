@@ -22,8 +22,15 @@ class CreateProfileVC: UIViewController {
     
     @IBOutlet weak var reenterPassword: UITextField!
     
+    @IBOutlet weak var errorLbl: UILabel!
+    
+    let errorText = "All the fields are mandatory."
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.errorLbl.text = self.errorText
+        self.errorLbl.isHidden = true
     }
     
     @IBAction func createProfileClick(_ sender: UIButton) {
@@ -37,7 +44,7 @@ class CreateProfileVC: UIViewController {
 
         if (name?.trimmingCharacters(in: .whitespaces) == "" || userName?.trimmingCharacters(in: .whitespaces)  == "" || mobileNumber?.trimmingCharacters(in: .whitespaces)   == "" || address?.trimmingCharacters(in: .whitespaces)  == "" || password?.trimmingCharacters(in: .whitespaces)  == "" ||
             reEnterpwd?.trimmingCharacters(in: .whitespaces)  == "" ) {
-            print("returning 1")
+            self.errorLbl.isHidden = false
             return
         }
         
@@ -51,11 +58,24 @@ class CreateProfileVC: UIViewController {
             profile.id = UUID.init().uuidString
             CoreDataManager.shared.save()
             self.dismiss(animated: true, completion: nil)
-        } else {
-            print("returning 3")
             return
         }
-        
-        
+        self.errorLbl.isHidden = false
     }
+    
+    @IBAction func skipClicked(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
+    
+    @IBAction func editingDidBegan(_ sender: UITextField) {
+        self.errorLbl.isHidden = true
+    }
+    
+    
+    
+}
+
+extension CreateProfileVC {
+    
 }

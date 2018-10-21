@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3A4DFF0021798E24002F11BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DFEFF21798E24002F11BB /* CoreDataManager.swift */; };
+		3A6875AA217B4C6B007384BC /* FRIENDSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6875A9217B4C6B007384BC /* FRIENDSVC.swift */; };
+		3A6875AC217B5678007384BC /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6875AB217B5678007384BC /* FriendsCell.swift */; };
 		3A99BB352178EF7C00CD3A1A /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99BB342178EF7C00CD3A1A /* CreateProfileVC.swift */; };
 		3A99BB6D2178FBA200CD3A1A /* Investment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99BB672178FBA200CD3A1A /* Investment+CoreDataClass.swift */; };
 		3A99BB6E2178FBA200CD3A1A /* Investment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99BB682178FBA200CD3A1A /* Investment+CoreDataProperties.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		3A4DFEFF21798E24002F11BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		3A6875A9217B4C6B007384BC /* FRIENDSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRIENDSVC.swift; sourceTree = "<group>"; };
+		3A6875AB217B5678007384BC /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		3A99BB342178EF7C00CD3A1A /* CreateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
 		3A99BB672178FBA200CD3A1A /* Investment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Investment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A99BB682178FBA200CD3A1A /* Investment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Investment+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 				3AC7B80D2178248000403DC0 /* MyProfileVC.swift */,
 				3A99BB342178EF7C00CD3A1A /* CreateProfileVC.swift */,
 				3A4DFEFF21798E24002F11BB /* CoreDataManager.swift */,
+				3A6875A9217B4C6B007384BC /* FRIENDSVC.swift */,
+				3A6875AB217B5678007384BC /* FriendsCell.swift */,
 			);
 			path = EverythingInCoreData;
 			sourceTree = "<group>";
@@ -179,6 +185,7 @@
 			files = (
 				3A99BB6E2178FBA200CD3A1A /* Investment+CoreDataProperties.swift in Sources */,
 				3A99BB712178FBA200CD3A1A /* Friend+CoreDataClass.swift in Sources */,
+				3A6875AA217B4C6B007384BC /* FRIENDSVC.swift in Sources */,
 				3A99BB722178FBA200CD3A1A /* Friend+CoreDataProperties.swift in Sources */,
 				3A99BB6D2178FBA200CD3A1A /* Investment+CoreDataClass.swift in Sources */,
 				3A99BB352178EF7C00CD3A1A /* CreateProfileVC.swift in Sources */,
@@ -189,6 +196,7 @@
 				3AC7B7F921781AB400403DC0 /* AppDelegate.swift in Sources */,
 				3A99BB702178FBA200CD3A1A /* Profile+CoreDataProperties.swift in Sources */,
 				3AC7B80121781AB400403DC0 /* EverythingInCoreData.xcdatamodeld in Sources */,
+				3A6875AC217B5678007384BC /* FriendsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

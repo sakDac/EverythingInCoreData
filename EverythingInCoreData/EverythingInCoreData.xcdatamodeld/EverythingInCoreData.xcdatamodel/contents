@@ -17,7 +17,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="investmentScheme" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Investment" inverseName="buyer" inverseEntity="Investment" syncable="YES"/>
+        <relationship name="investmentScheme" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Investment" inverseName="buyer" inverseEntity="Investment" syncable="YES"/>
         <relationship name="myFriends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Friend" syncable="YES"/>
     </entity>
     <elements>

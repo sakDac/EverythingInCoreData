@@ -83,7 +83,7 @@ extension FRIENDSVC : UITableViewDelegate, UITableViewDataSource {
 extension FRIENDSVC : FriendsDelegate {
     func turnedOn(profile: Profile) {
         print("turned on \(profile.name)")
-        self.coreDataManager.addOrRemoveFriend(friendProfile: profile, isAdd: true)
+        self.coreDataManager.addFriend(friendProfile: profile)
     }
     
     func turedOff(profile: Profile) {

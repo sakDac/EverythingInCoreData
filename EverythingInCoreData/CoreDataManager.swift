@@ -69,7 +69,7 @@ class CoreDataManager {
     }
     
     
-    func addOrRemoveFriend(friendProfile: Profile, isAdd: Bool ) {
+    func addFriend(friendProfile: Profile) {
         let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
         let predicate = NSPredicate(format: "id == %@", profileId)
         self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
@@ -78,11 +78,7 @@ class CoreDataManager {
             }
             let friend = Friend(context: self.context)
             friend.myProfile = friendProfile
-            if isAdd {
-               currentProfile.addToMyFriends(friend)
-            } else {
-               currentProfile.removeFromMyFriends(friend)
-            }
+            currentProfile.addToMyFriends(friend)
             self.save()
         }
     }

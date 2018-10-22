@@ -2,9 +2,8 @@
 //  Profile+CoreDataProperties.swift
 //  EverythingInCoreData
 //
-//  Created by saket bhushan on 21/10/18.
+//  Created by saket bhushan on 22/10/18.
 //  Copyright © 2018 saket bhushan. All rights reserved.
-//
 //
 
 import Foundation
@@ -23,8 +22,25 @@ extension Profile {
     @NSManaged public var name: String?
     @NSManaged public var password: String?
     @NSManaged public var userName: String?
-    @NSManaged public var investmentScheme: Investment?
+    @NSManaged public var investmentScheme: NSSet?
     @NSManaged public var myFriends: NSSet?
+
+}
+
+// MARK: Generated accessors for investmentScheme
+extension Profile {
+
+    @objc(addInvestmentSchemeObject:)
+    @NSManaged public func addToInvestmentScheme(_ value: Investment)
+
+    @objc(removeInvestmentSchemeObject:)
+    @NSManaged public func removeFromInvestmentScheme(_ value: Investment)
+
+    @objc(addInvestmentScheme:)
+    @NSManaged public func addToInvestmentScheme(_ values: NSSet)
+
+    @objc(removeInvestmentScheme:)
+    @NSManaged public func removeFromInvestmentScheme(_ values: NSSet)
 
 }
 

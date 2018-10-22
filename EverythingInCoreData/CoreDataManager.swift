@@ -99,6 +99,7 @@ class CoreDataManager {
                 let frn = inFriend as! Friend
                 if friendProfile.id! == frn.myProfile?.id {
                     currentProfile.removeFromMyFriends(frn)
+                    self.context.delete(frn)
                 }
             }
             self.save()

@@ -20,9 +20,6 @@ class MyProfileVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var fetchResultsVC : NSFetchedResultsController<Friend>!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "My Profile"
@@ -33,28 +30,20 @@ class MyProfileVC: UIViewController {
         
         self.navigationItem.rightBarButtonItems =  [rightBarButton]
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.coreDataManager.getCurrentUserProfile { (profile) in
             self.formatString(profile: profile)
             self.friendsList.removeAll()
             for friend in profile.myFriends! {
                 let frn = friend as! Friend
                 self.friendsList.append(frn)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-                
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
-    }
-    
-    func setUpFetchResultsController() {
-        
-//        let fetchResults = Friend.getFetchRequest()
-//        
-//        fetchResults.predicate = NSPredicate(format: "", <#T##args: CVarArg...##CVarArg#>)
-//        
-//        self.fetchResultsVC = NSFetchedResultsController(fetchRequest: fetchResults, managedObjectContext: self.coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
     }
     
     func formatString(profile: Profile)  {
@@ -77,13 +66,25 @@ extension MyProfileVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.friendsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyProfileCell
+        cell.textLabel?.text = self.friendsList[indexPath.row].myProfile?.name ?? "invalid row"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Friends"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
 }

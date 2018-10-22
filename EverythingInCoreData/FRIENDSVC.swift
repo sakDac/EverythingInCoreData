@@ -18,6 +18,9 @@ class FRIENDSVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let friendsRequest =  NSFetchRequest<Profile>(entityName: "Profile")
+        let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
+        let predicate = NSPredicate(format: "id != %@", profileId)
+        friendsRequest.predicate = predicate
         friendsRequest.sortDescriptors = [.init(key: "name", ascending: true)]
         self.fetchedResultsController = NSFetchedResultsController<Profile>(fetchRequest: friendsRequest, managedObjectContext: coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         do {
@@ -40,6 +43,11 @@ class FRIENDSVC: UIViewController {
             }
         }
      return false
+    }
+    
+    deinit {
+        print(" deinit Friends vc")
+        self.fetchedResultsController = nil
     }
 }
 

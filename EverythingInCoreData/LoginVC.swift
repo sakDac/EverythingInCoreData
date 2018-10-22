@@ -98,8 +98,7 @@ class LoginVC: UIViewController {
 extension LoginVC : AuthenticationDelegate {
     func LoginSuccess() {
         DispatchQueue.main.async {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyProfileVC") as! MyProfileVC
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.dismiss(animated: true)
         }
     }
     

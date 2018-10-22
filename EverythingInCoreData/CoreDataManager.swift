@@ -39,6 +39,7 @@ class CoreDataManager {
                     return
                 }
                 UserDefaults.standard.setValue(id, forKey: "profileId")
+                UserDefaults.standard.setValue(true, forKey: "isUserLoggedIn")
             } else {
                 self.authenticationDelegate?.LoginFailed()
             }
@@ -106,6 +107,12 @@ class CoreDataManager {
         }
     }
     
+    func isUserAlreadyLoggedIn() -> Bool  {
+        if let isUserLoggedIn = UserDefaults.standard.value(forKey: "isUserLoggedIn") as? Bool {
+            return isUserLoggedIn
+        }
+        return false
+    }
     
     
 }

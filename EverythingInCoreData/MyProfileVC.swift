@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MyProfileVC: UIViewController {
 
@@ -14,6 +15,13 @@ class MyProfileVC: UIViewController {
     @IBOutlet weak var detailsTextView: UITextView!
     
     var coreDataManager = CoreDataManager.shared
+    
+    var friendsList = [Friend]()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var fetchResultsVC : NSFetchedResultsController<Friend>!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,28 +35,27 @@ class MyProfileVC: UIViewController {
         
         self.coreDataManager.getCurrentUserProfile { (profile) in
             self.formatString(profile: profile)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.coreDataManager.getCurrentUserProfile { (profile) in
-            print(" profile :: \(profile) ")
-            
-            
+            self.friendsList.removeAll()
             for friend in profile.myFriends! {
-                
                 let frn = friend as! Friend
+                self.friendsList.append(frn)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
                 
-                print("  friend :: \(frn.myProfile?.name) ")
+                
             }
-            
-            
-            
-            
         }
     }
     
+    func setUpFetchResultsController() {
+        
+//        let fetchResults = Friend.getFetchRequest()
+//        
+//        fetchResults.predicate = NSPredicate(format: "", <#T##args: CVarArg...##CVarArg#>)
+//        
+//        self.fetchResultsVC = NSFetchedResultsController(fetchRequest: fetchResults, managedObjectContext: self.coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+    }
     
     func formatString(profile: Profile)  {
         let text = "ID : " + profile.id! + "\nUser Name : " + profile.userName!
@@ -66,7 +73,7 @@ class MyProfileVC: UIViewController {
 extension MyProfileVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

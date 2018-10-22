@@ -16,6 +16,10 @@ extension Friend {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Friend> {
         return NSFetchRequest<Friend>(entityName: "Friend")
     }
+    
+    public class func getFetchRequest() -> NSFetchRequest<Friend> {
+        return self.fetchRequest()
+    }
 
     @NSManaged public var myProfile: Profile?
 

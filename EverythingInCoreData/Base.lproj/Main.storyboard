@@ -167,6 +167,7 @@
                     </view>
                     <connections>
                         <outlet property="detailsTextView" destination="IlF-Vu-XPR" id="cCT-4L-b1d"/>
+                        <outlet property="tableView" destination="pa8-jr-vOu" id="2Wr-aR-hNq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKV-PQ-sce" userLabel="First Responder" sceneMemberID="firstResponder"/>

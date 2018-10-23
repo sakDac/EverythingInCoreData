@@ -87,21 +87,35 @@ class MyProfileVC: UIViewController {
 extension MyProfileVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.friendsList.count
+        if section == 1 {
+            return self.friendsList.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyProfileCell
+        if indexPath.section == 1 {
         cell.textLabel?.text = self.friendsList[indexPath.row].myProfile?.name ?? "invalid row"
+        } else {
+           cell.textLabel?.text = "TATA Mutual funds"
+        }
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Friends"
+        if section == 1 {
+            return "Friends"
+        }
+        return "Investments"
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

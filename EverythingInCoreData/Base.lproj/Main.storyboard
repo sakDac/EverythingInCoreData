@@ -482,6 +482,64 @@
             </objects>
             <point key="canvasLocation" x="4130" y="24"/>
         </scene>
+        <!--Profile Table View Controller-->
+        <scene sceneID="Fws-6W-106">
+            <objects>
+                <tableViewController storyboardIdentifier="ProfileTableViewController" id="i9X-My-Uyg" customClass="ProfileTableViewController" customModule="EverythingInCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1AL-rd-5nk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvestmentCell" rowHeight="100" id="VFl-ms-0Vk" customClass="InvestmentCell" customModule="EverythingInCoreData" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VFl-ms-0Vk" id="Kr8-zQ-URA">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVQ-Sc-Z8q">
+                                            <rect key="frame" x="10" y="10" width="298" height="79.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ny8-v3-Fdl">
+                                            <rect key="frame" x="318" y="30" width="42" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="8Cf-S6-ec3"/>
+                                                <constraint firstAttribute="height" constant="40" id="J7K-KK-71p"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="switchClick:" destination="VFl-ms-0Vk" eventType="valueChanged" id="OCK-pN-0uD"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ny8-v3-Fdl" firstAttribute="centerY" secondItem="Kr8-zQ-URA" secondAttribute="centerY" id="LT7-gd-Tzz"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ny8-v3-Fdl" secondAttribute="trailing" constant="17" id="RNt-Nu-t8F"/>
+                                        <constraint firstAttribute="bottom" secondItem="BVQ-Sc-Z8q" secondAttribute="bottom" constant="10" id="WwA-XL-6Yw"/>
+                                        <constraint firstItem="BVQ-Sc-Z8q" firstAttribute="leading" secondItem="Kr8-zQ-URA" secondAttribute="leading" constant="10" id="azt-9B-QZT"/>
+                                        <constraint firstItem="BVQ-Sc-Z8q" firstAttribute="top" secondItem="Kr8-zQ-URA" secondAttribute="top" constant="10" id="dRU-Id-2Lc"/>
+                                        <constraint firstItem="Ny8-v3-Fdl" firstAttribute="leading" secondItem="BVQ-Sc-Z8q" secondAttribute="trailing" constant="10" id="maY-5a-xDR"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="switchHandle" destination="Ny8-v3-Fdl" id="X9w-X5-yMj"/>
+                                    <outlet property="textLbl" destination="BVQ-Sc-Z8q" id="xqN-gR-hw0"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="i9X-My-Uyg" id="1am-0N-f50"/>
+                            <outlet property="delegate" destination="i9X-My-Uyg" id="Uyh-o9-oi2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aa9-BN-2pY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4848" y="22"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="vQE-nH-ODa">
             <objects>

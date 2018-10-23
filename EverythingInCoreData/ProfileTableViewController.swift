@@ -1,59 +1,55 @@
 //
-//  InvestmentTableViewController.swift
+//  ProfileTableViewController.swift
 //  EverythingInCoreData
 //
-//  Created by Saket Bhushan on 23/10/18.
+//  Created by saket bhushan on 23/10/18.
 //  Copyright © 2018 saket bhushan. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class InvestmentTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController {
 
-    
-    var fetchResultsVC : NSFetchedResultsController<Investment>!
-    
+    var investmentID = ""
+    var fetchResultController : NSFetchedResultsController<Investment>!
     var coreDataManager = CoreDataManager.shared
     
-    var currentProfile: Profile!
+    var profileList = [Profile]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let fetchRequest = Investment.getfetchRequest()
-        
-        fetchRequest.sortDescriptors = [.init(key: "company", ascending: true)]
-        
-        self.fetchResultsVC = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
-        do {
-            try self.fetchResultsVC.performFetch()
-        } catch {
-            print("something went wrong while fetching data")
-        }
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        self.coreDataManager.getCurrentUserProfile { (currentUserProfile) in
-            self.currentProfile = currentUserProfile
+       let fetchRequest = Investment.getfetchRequest()
+       fetchRequest.sortDescriptors = [.init(key: "company", ascending: true)]
+       fetchRequest.predicate = NSPredicate(format: "id == %@", self.investmentID)
+        
+       self.fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try self.fetchResultController.performFetch()
+            self.fetchResultController.fetchedObjects?.first?.buyer?.forEach({ (buyer) in
+                let profile = buyer as! Profile
+                self.profileList.append(profile)
+            })
+//            self.tableView.reloadData()
+            
+        } catch  {
+            print(" error in fetching investments")
         }
-    }
-    
-    func isTaken(id: String) -> Bool {
-        for inInvestment in  self.currentProfile!.investmentScheme! {
-            let investment = inInvestment as! Investment
-            if id == investment.id {
-                return true
-            }
-        }
-        return false
     }
 
+    
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,39 +58,19 @@ class InvestmentTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.fetchResultsVC.sections?[section].numberOfObjects ?? 0
+        return profileList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InvestmentCell", for: indexPath) as! InvestmentCell
-       let investment = self.fetchResultsVC?.object(at: indexPath)
-        cell.setData(investment: investment!, isTaken: self.isTaken(id: ((investment?.id!)!)))
-        cell.textLbl.text = "Company : " + (investment?.company)! + " Plan Name : " + (investment?.planName)!
+        let profile = profileList[indexPath.row]
+        cell.textLbl.text = "Name : " + profile.name!
         cell.investmentDelegate = self
-        
         return cell
     }
  
 
-   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
-        
-        let investment = self.fetchResultsVC?.object(at: indexPath)
-        
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileTableViewController") as! ProfileTableViewController
-        vc.investmentID = (investment?.id!) ?? "" 
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
-    
-    
-    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -142,13 +118,13 @@ class InvestmentTableViewController: UITableViewController {
 
 }
 
-extension InvestmentTableViewController: InvestmentCellDelegate {
+extension ProfileTableViewController : InvestmentCellDelegate {
     func turnedOn(investment: Investment) {
-     self.coreDataManager.addInvestment(investment: investment)
+        
     }
     
     func turedOff(investment: Investment) {
-     self.coreDataManager.removeInvestment(investment: investment)
+        
     }
     
     

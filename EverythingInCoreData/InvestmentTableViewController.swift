@@ -16,6 +16,8 @@ class InvestmentTableViewController: UITableViewController {
     
     var coreDataManager = CoreDataManager.shared
     
+    var currentProfile: Profile!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,20 @@ class InvestmentTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.coreDataManager.getCurrentUserProfile { (currentUserProfile) in
+            self.currentProfile = currentUserProfile
+        }
+    }
+    
+    func isTaken(id: String) -> Bool {
+        for inInvestment in  self.currentProfile!.investmentScheme! {
+            let investment = inInvestment as! Investment
+            if id == investment.id {
+                return true
+            }
+        }
+        return false
     }
 
     // MARK: - Table view data source
@@ -54,7 +70,10 @@ class InvestmentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InvestmentCell", for: indexPath) as! InvestmentCell
        let investment = self.fetchResultsVC?.object(at: indexPath)
+        cell.setData(investment: investment!, isTaken: self.isTaken(id: ((investment?.id!)!)))
         cell.textLbl.text = "Company : " + (investment?.company)! + " Plan Name : " + (investment?.planName)!
+        cell.investmentDelegate = self
+        
         return cell
     }
  
@@ -111,4 +130,16 @@ class InvestmentTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension InvestmentTableViewController: InvestmentCellDelegate {
+    func turnedOn(investment: Investment) {
+     self.coreDataManager.addInvestment(investment: investment)
+    }
+    
+    func turedOff(investment: Investment) {
+     self.coreDataManager.removeInvestment(investment: investment)
+    }
+    
+    
 }

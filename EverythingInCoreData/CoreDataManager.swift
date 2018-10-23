@@ -47,7 +47,7 @@ class CoreDataManager {
     }
     
     func getCurrentUserProfile(comptionHandler: @escaping ((Profile) -> Void)) {
-        let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
+        guard let profileId = UserDefaults.standard.value(forKey: "profileId") as? String else {return}
         let predicate = NSPredicate(format: "id == %@", profileId)
         self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
             guard let profile = result.first as? Profile else {
@@ -83,8 +83,6 @@ class CoreDataManager {
         }
     }
     
-    
-    
     func removeFriend(friendProfile: Profile) {
         let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
         let predicate = NSPredicate(format: "id == %@", profileId)
@@ -103,12 +101,34 @@ class CoreDataManager {
         }
     }
     
+    func addInvestment(investment: Investment) {
+        let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
+        let predicate = NSPredicate(format: "id == %@", profileId)
+        self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
+            guard let currentProfile = result.first as? Profile else {
+                return
+            }
+            currentProfile.addToInvestmentScheme(investment)
+        }
+        self.save()
+    }
+    
+    func removeInvestment(investment: Investment) {
+        let profileId = UserDefaults.standard.value(forKey: "profileId") as! String
+        let predicate = NSPredicate(format: "id == %@", profileId)
+        self.fetchAll(enitityName: "Profile", predicate: predicate) { (result) in
+            guard let currentProfile = result.first as? Profile else {
+                return
+            }
+            currentProfile.removeFromInvestmentScheme(investment)
+        }
+        self.save()
+    }
+    
     func isUserAlreadyLoggedIn() -> Bool  {
         if let isUserLoggedIn = UserDefaults.standard.value(forKey: "isUserLoggedIn") as? Bool {
             return isUserLoggedIn
         }
         return false
     }
-    
-    
 }

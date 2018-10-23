@@ -20,11 +20,13 @@ class MyProfileVC: UIViewController {
     
     var friendsList = [Friend]()
     
+    var investmentList = [Investment]()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.addSampleInvestment()
+
         self.profileImg.backgroundColor = UIColor.red
         self.profileImg.layer.cornerRadius = self.profileImg.frame.width/2
         self.profileImg.layer.masksToBounds = false
@@ -45,17 +47,6 @@ class MyProfileVC: UIViewController {
         }
     }
     
-    func addSampleInvestment() {
-        for i in 1 ... 10 {
-            let investment = Investment(context: self.coreDataManager.context)
-            investment.company = "company : " + "\(i)"
-            investment.id = UUID.init().uuidString
-            investment.planName = "plan : " + "\(i)"
-            investment.profileId = "profile : " + "\(i)"
-            self.coreDataManager.save()
-        }
-    }
-    
     func presentLogin() {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         vc.modalPresentationStyle = .overCurrentContext
@@ -66,10 +57,18 @@ class MyProfileVC: UIViewController {
         self.coreDataManager.getCurrentUserProfile { (profile) in
             self.formatString(profile: profile)
             self.friendsList.removeAll()
+            self.investmentList.removeAll()
+            
             for friend in profile.myFriends! {
                 let frn = friend as! Friend
                 self.friendsList.append(frn)
             }
+            
+            for inInvestment in profile.investmentScheme! {
+                let investment = inInvestment as! Investment
+                self.investmentList.append(investment)
+            }
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -79,7 +78,7 @@ class MyProfileVC: UIViewController {
     func formatString(profile: Profile)  {
         
         let text = "ID : " + profile.id!.prefix(5) + "\n\nUser Name :\t" + profile.userName!
-        let text2 =    text + "\n\nName :\t" + profile.name! + "\n\nNMobile :\t"  + String(profile.mobileNumber)
+        let text2 = text + "\n\nName :\t" + profile.name! + "\n\nNMobile :\t"  + String(profile.mobileNumber)
         let text3 = text2 + "\n\nAddress :\t" + profile.address!
         self.detailsTextView.text = text3
     }
@@ -111,7 +110,7 @@ extension MyProfileVC: UITableViewDelegate, UITableViewDataSource {
         if section == 1 {
             return self.friendsList.count
         } else {
-            return 1
+            return self.investmentList.count
         }
     }
     
@@ -120,7 +119,7 @@ extension MyProfileVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 1 {
         cell.textLabel?.text = self.friendsList[indexPath.row].myProfile?.name ?? "invalid row"
         } else {
-           cell.textLabel?.text = "TATA Mutual funds"
+            cell.textLabel?.text = self.investmentList[indexPath.row].company! + " : " + self.investmentList[indexPath.row].planName!
         }
         return cell
     }

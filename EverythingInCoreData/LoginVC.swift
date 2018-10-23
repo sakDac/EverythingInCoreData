@@ -52,7 +52,8 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         self.errorLbl.isHidden = true
         self.errorLbl.text = self.errorText
-//        addSampleProfiles()
+//        self.addSampleProfiles()
+//        self.addSampleInvestment()
     }
     
     
@@ -88,8 +89,19 @@ class LoginVC: UIViewController {
             profile.address = "friend address : " + "\(i)"
             profile.mobileNumber = 9958
             profile.id = UUID.init().uuidString
-            self.coreDataManger.save()
         }
+        self.coreDataManger.save()
+    }
+    
+    func addSampleInvestment() {
+        for i in 1 ... 10 {
+            let investment = Investment(context: self.coreDataManger.context)
+            investment.company = "company : " + "\(i)"
+            investment.id = UUID.init().uuidString
+            investment.planName = "plan : " + "\(i)"
+            investment.profileId = "profile : " + "\(i)"
+        }
+        self.coreDataManger.save()
     }
     
 }

@@ -9,17 +9,17 @@
 import UIKit
 
 protocol InvestmentCellDelegate: class {
-    func turnedOn(profile: Profile)
-    func turedOff(profile: Profile)
+    func turnedOn(investment: Investment)
+    func turedOff(investment: Investment)
 }
 
 class InvestmentCell: UITableViewCell {
     
     @IBOutlet weak var textLbl: UILabel!
     
-    weak var friendsDelegate: FriendsDelegate?
+    weak var investmentDelegate: InvestmentCellDelegate?
     
-    var profile: Profile?
+    var investment: Investment?
     
     
     @IBOutlet weak var switchHandle: UISwitch!
@@ -29,19 +29,17 @@ class InvestmentCell: UITableViewCell {
         // Initialization code
     }
     
-    func setData(profile: Profile, isAFriend: Bool) {
-        self.profile = profile
-        print(" profile :: \(profile.name) :: \(isAFriend) ")
-        self.switchHandle.setOn(isAFriend, animated: true)
-        
+    func setData(investment: Investment, isTaken: Bool) {
+        self.investment = investment
+        self.switchHandle.setOn(isTaken, animated: true)
     }
     
     
     @IBAction func switchClick(_ sender: UISwitch) {
         if sender.isOn {
-            self.friendsDelegate?.turnedOn(profile: self.profile!)
+            self.investmentDelegate?.turnedOn(investment: self.investment!)
         } else {
-            self.friendsDelegate?.turedOff(profile: self.profile!)
+            self.investmentDelegate?.turedOff(investment: self.investment!)
         }
     }
     

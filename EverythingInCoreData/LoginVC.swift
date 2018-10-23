@@ -92,7 +92,6 @@ class LoginVC: UIViewController {
         }
     }
     
-    
 }
 
 extension LoginVC : AuthenticationDelegate {

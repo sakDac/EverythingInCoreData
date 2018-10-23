@@ -24,6 +24,7 @@ class MyProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.addSampleInvestment()
         self.profileImg.backgroundColor = UIColor.red
         self.profileImg.layer.cornerRadius = self.profileImg.frame.width/2
         self.profileImg.layer.masksToBounds = false
@@ -41,6 +42,17 @@ class MyProfileVC: UIViewController {
         
         if !self.coreDataManager.isUserAlreadyLoggedIn() {
             self.presentLogin()
+        }
+    }
+    
+    func addSampleInvestment() {
+        for i in 1 ... 10 {
+            let investment = Investment(context: self.coreDataManager.context)
+            investment.company = "company : " + "\(i)"
+            investment.id = UUID.init().uuidString
+            investment.planName = "plan : " + "\(i)"
+            investment.profileId = "profile : " + "\(i)"
+            self.coreDataManager.save()
         }
     }
     
@@ -76,6 +88,11 @@ class MyProfileVC: UIViewController {
     let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FRIENDSVC") as! FRIENDSVC
     self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func showInvestmentList() {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InvestmentTableViewController") as! InvestmentTableViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
    
     @objc func SignOut() {
         UserDefaults.standard.setValue(nil, forKey: "isUserLoggedIn")
@@ -109,6 +126,7 @@ extension MyProfileVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.showInvestmentList()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

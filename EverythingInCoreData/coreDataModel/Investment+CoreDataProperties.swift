@@ -17,6 +17,10 @@ extension Investment {
         return NSFetchRequest<Investment>(entityName: "Investment")
     }
 
+    @nonobjc public class func getfetchRequest() -> NSFetchRequest<Investment> {
+        return self.fetchRequest()
+    }
+    
     @NSManaged public var company: String?
     @NSManaged public var id: String?
     @NSManaged public var planName: String?

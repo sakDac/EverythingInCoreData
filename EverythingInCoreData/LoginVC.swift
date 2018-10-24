@@ -8,27 +8,6 @@
 
 import UIKit
 
-// Things to cover in core data.
-/*
- * Basics
- * Relationships
- * Threadsafety
- * Multithreading
- * using multiple context
- * using multiple db file
- * using multiple datamodelfile
- * updation of model version
- * updation and migration of db
- * using predicates
- * optimising predicates
- * some less known things
- * core data theory
- * what makes core data faster
- * core data Generic Funtions, https://codereview.stackexchange.com/questions/147005/swift-3-generic-fetch-request-extension, https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
- * NSFetchedResultsController
- */
-
-
 protocol AuthenticationDelegate: class {
     func LoginSuccess()
     func LoginFailed()

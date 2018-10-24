@@ -1,0 +1,27 @@
+/* 
+  EverythingInCoreData.strings
+  EverythingInCoreData
+
+  Created by Saket Bhushan on 24/10/18.
+  Copyright © 2018 saket bhushan. All rights reserved.
+*/
+
+// Things to cover in core data.
+/*
+ * Basics
+ * Relationships -> done
+ * NSFetchedResultsController -> done
+ * using predicates -> done
+ * Multithreading, ThreadSafety and using multiple context use -> done (Design : https://cocoacasts.com/core-data-and-concurrency, https://www.youtube.com/watch?v=RaNPt--nG5c)
+ * using multiple db file
+ * using multiple datamodelfile
+ * updation of model version
+ * updation and migration of db
+ * optimising predicates
+ * some less known things
+ * core data theory
+ * what makes core data faster
+ * core data Generic Funtions, https://codereview.stackexchange.com/questions/147005/swift-3-generic-fetch-request-extension, https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
+ */
+
+

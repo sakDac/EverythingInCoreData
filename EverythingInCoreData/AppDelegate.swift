@@ -76,12 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
-        
-        persistentContainer.performBackgroundTask { (<#NSManagedObjectContext#>) in
-            <#code#>
-        }
-        
-        
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

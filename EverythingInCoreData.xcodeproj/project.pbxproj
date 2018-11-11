@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A45D3B22197420000EAE0A6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A45D3B12197420000EAE0A6 /* CoreDataStack.swift */; };
 		3A4DFF0021798E24002F11BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4DFEFF21798E24002F11BB /* CoreDataManager.swift */; };
 		3A6875AA217B4C6B007384BC /* FRIENDSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6875A9217B4C6B007384BC /* FRIENDSVC.swift */; };
 		3A6875AC217B5678007384BC /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6875AB217B5678007384BC /* FriendsCell.swift */; };
@@ -18,6 +19,7 @@
 		3A99BB702178FBA200CD3A1A /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99BB6A2178FBA200CD3A1A /* Profile+CoreDataProperties.swift */; };
 		3A99BB712178FBA200CD3A1A /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99BB6B2178FBA200CD3A1A /* Friend+CoreDataClass.swift */; };
 		3A99BB722178FBA200CD3A1A /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99BB6C2178FBA200CD3A1A /* Friend+CoreDataProperties.swift */; };
+		3ABA8F622184DF10003F7468 /* EverythingInCoreData.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3ABA8F612184DF0F003F7468 /* EverythingInCoreData.strings */; };
 		3AC7B7F921781AB400403DC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B7F821781AB400403DC0 /* AppDelegate.swift */; };
 		3AC7B7FB21781AB400403DC0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B7FA21781AB400403DC0 /* LoginVC.swift */; };
 		3AC7B7FE21781AB400403DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC7B7FC21781AB400403DC0 /* Main.storyboard */; };
@@ -32,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A45D3B12197420000EAE0A6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3A4DFEFF21798E24002F11BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3A6875A9217B4C6B007384BC /* FRIENDSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRIENDSVC.swift; sourceTree = "<group>"; };
 		3A6875AB217B5678007384BC /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		3A99BB6A2178FBA200CD3A1A /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A99BB6B2178FBA200CD3A1A /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A99BB6C2178FBA200CD3A1A /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3ABA8F612184DF0F003F7468 /* EverythingInCoreData.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = EverythingInCoreData.strings; sourceTree = "<group>"; };
 		3AC7B7F521781AB400403DC0 /* EverythingInCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverythingInCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC7B7F821781AB400403DC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AC7B7FA21781AB400403DC0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		3AC7B7F721781AB400403DC0 /* EverythingInCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				3ABA8F612184DF0F003F7468 /* EverythingInCoreData.strings */,
 				A1D540C1217DC92600235BB8 /* cell */,
 				3A4DFF012179A612002F11BB /* coreDataModel */,
 				3AC7B7F821781AB400403DC0 /* AppDelegate.swift */,
@@ -117,6 +122,7 @@
 				3A6875A9217B4C6B007384BC /* FRIENDSVC.swift */,
 				A176C6AD217EFFFD00056DAF /* InvestmentTableViewController.swift */,
 				3A910B36217F7CD2003444DE /* ProfileTableViewController.swift */,
+				3A45D3B12197420000EAE0A6 /* CoreDataStack.swift */,
 			);
 			path = EverythingInCoreData;
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AC7B80621781AB500403DC0 /* LaunchScreen.storyboard in Resources */,
+				3ABA8F622184DF10003F7468 /* EverythingInCoreData.strings in Resources */,
 				3AC7B80321781AB500403DC0 /* Assets.xcassets in Resources */,
 				3AC7B7FE21781AB400403DC0 /* Main.storyboard in Resources */,
 				3AC7B8102178284500403DC0 /* man.png in Resources */,
@@ -211,6 +218,7 @@
 				3A99BB6D2178FBA200CD3A1A /* Investment+CoreDataClass.swift in Sources */,
 				3A99BB352178EF7C00CD3A1A /* CreateProfileVC.swift in Sources */,
 				3A99BB6F2178FBA200CD3A1A /* Profile+CoreDataClass.swift in Sources */,
+				3A45D3B22197420000EAE0A6 /* CoreDataStack.swift in Sources */,
 				3A4DFF0021798E24002F11BB /* CoreDataManager.swift in Sources */,
 				3AC7B80E2178248000403DC0 /* MyProfileVC.swift in Sources */,
 				3AC7B7FB21781AB400403DC0 /* LoginVC.swift in Sources */,

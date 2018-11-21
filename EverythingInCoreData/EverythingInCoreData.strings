@@ -21,6 +21,8 @@
  * some less known things
  * what makes core data faster
  * core data Generic Funtions, https://codereview.stackexchange.com/questions/147005/swift-3-generic-fetch-request-extension, https://swifting.io/blog/2016/11/27/28-better-coredata-with-swift-generics/
+ * Where to Store a Core Data Persistent Store (your sqllite file) -> done https://cocoacasts.com/where-to-store-a-core-data-persistent-store
+ * Moving Core Data Files -> done https://useyourloaf.com/blog/moving-core-data-files/
  */
 
 
